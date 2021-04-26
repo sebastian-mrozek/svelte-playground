@@ -1,8 +1,8 @@
-import { EMPTY_LIST, TodoItem } from '../model/model';
+import { emptyList, TodoItem } from '../model/model';
 import { writable, Readable, derived } from 'svelte/store';
 
 export const todoStore = (() => {
-	const { subscribe, set, update } = writable(EMPTY_LIST);
+	const { subscribe, set, update } = writable(emptyList());
 
 	const toggleItemInArray = (items: TodoItem[], caption: string): TodoItem[] => {
 		return items.map((item) => {

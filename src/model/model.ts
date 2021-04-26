@@ -8,9 +8,11 @@ class TodoList {
 	items: TodoItem[];
 }
 
-export const EMPTY_LIST: TodoList = {
-	hideCompleted: false,
-	items: []
+export const emptyList = (): TodoList => {
+	return {
+		hideCompleted: false,
+		items: []
+	};
 };
 
 export { TodoItem, TodoList };
