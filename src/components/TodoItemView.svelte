@@ -4,14 +4,14 @@
 
 	const dispatch = createEventDispatcher();
 	export let item: TodoItem;
-
-	function onItemClicked() {
-		dispatch('item-toggled', { id: item.id });
-	}
 </script>
 
 <li>
-	<input type="checkbox" on:click={onItemClicked} checked={item.completed} />
+	<input
+		type="checkbox"
+		on:click={() => dispatch('item-toggled', { id: item.id })}
+		checked={item.completed}
+	/>
 	<span class:done={item.completed}>{item.caption}</span>
 </li>
 

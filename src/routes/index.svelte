@@ -3,12 +3,8 @@
 	import { todoStore, todoCountStore } from '../data/store';
 	import TodoListView from '../components/TodoListView.svelte';
 
-	function itemToggled(itemToggledEvent) {
-		todoStore.toggleCompleted(itemToggledEvent.detail.id);
-	}
-
 	// initialize the todo list with some data
-	todoStore.set({
+	$todoStore = {
 		id: uuidv4(),
 		name: 'my first list',
 		hideCompleted: false,
@@ -26,10 +22,15 @@
 			{
 				id: uuidv4(),
 				caption: 'other task',
-				completed: true
+				completed: false
 			}
 		]
-	});
+	};
 </script>
 
-<TodoListView todoList={$todoStore} todoCount={$todoCountStore} on:item-toggled={itemToggled} />
+<TodoListView
+	todoList={$todoStore}
+	todoCount={$todoCountStore}
+	on:hide-toggled={() => todoStore.toggleHide()}
+	on:item-toggled={(e) => todoStore.toggleCompleted(e.detail.id)}
+/>

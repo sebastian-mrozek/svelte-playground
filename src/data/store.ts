@@ -26,10 +26,20 @@ export const todoStore = (() => {
 		});
 	};
 
+	const toggleHide = () => {
+		update((todoList) => {
+			return {
+				...todoList,
+				hideCompleted: !todoList.hideCompleted
+			};
+		});
+	};
+
 	return {
 		subscribe,
 		set,
-		toggleCompleted
+		toggleCompleted,
+		toggleHide
 	};
 })();
 
