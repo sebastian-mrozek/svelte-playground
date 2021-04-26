@@ -4,9 +4,9 @@ import { writable, Readable, derived } from 'svelte/store';
 export const todoStore = (() => {
 	const { subscribe, set, update } = writable(emptyList());
 
-	const toggleItemInArray = (items: TodoItem[], caption: string): TodoItem[] => {
+	const toggleCompletedInArray = (items: TodoItem[], id: string): TodoItem[] => {
 		return items.map((item) => {
-			if (item.caption === caption) {
+			if (item.id === id) {
 				return {
 					...item,
 					completed: !item.completed
@@ -17,11 +17,11 @@ export const todoStore = (() => {
 		});
 	};
 
-	const toggleItem = (caption: string) => {
+	const toggleCompleted = (id: string) => {
 		update((todoList) => {
 			return {
 				...todoList,
-				items: toggleItemInArray(todoList.items, caption)
+				items: toggleCompletedInArray(todoList.items, id)
 			};
 		});
 	};
@@ -29,7 +29,7 @@ export const todoStore = (() => {
 	return {
 		subscribe,
 		set,
-		toggleItem
+		toggleCompleted
 	};
 })();
 

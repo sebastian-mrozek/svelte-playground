@@ -6,7 +6,7 @@
 	export let item: TodoItem;
 
 	function onItemClicked() {
-		dispatch('item-toggled', { caption: item.caption });
+		dispatch('item-toggled', { id: item.id });
 	}
 </script>
 

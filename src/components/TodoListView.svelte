@@ -7,6 +7,7 @@
 </script>
 
 <div class="container">
+	<div class="header">{todoList.name}</div>
 	{#if todoList.items.length == 0}
 		Plan your next step!
 	{:else}
@@ -24,6 +25,11 @@
 </div>
 
 <style>
+	.header {
+		font-variant: small-caps;
+		margin-bottom: 1em;
+		border-bottom: 1px solid darkslategray;
+	}
 	.container {
 		border: 1px solid lightgray;
 		border-radius: 3px;
