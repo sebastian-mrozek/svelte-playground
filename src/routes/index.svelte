@@ -35,6 +35,7 @@
 		todoCount={$todoCountStore}
 		on:hide-toggled={() => todoStore.toggleHide()}
 		on:item-toggled={(e) => todoStore.toggleCompleted(e.detail.id)}
+		on:item-renamed={(e) => todoStore.renameItem(e.detail.id, e.detail.name)}
 	/>
 	<DebugComponent />
 </div>

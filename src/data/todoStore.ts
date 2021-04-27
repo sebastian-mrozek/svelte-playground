@@ -35,11 +35,34 @@ export const todoStore = (() => {
 		});
 	};
 
+	const renameItemInArray = (items: TodoItem[], id: string, name: string): TodoItem[] => {
+		return items.map((item) => {
+			if (item.id === id) {
+				return {
+					...item,
+					caption: name
+				};
+			} else {
+				return item;
+			}
+		});
+	};
+
+	const renameItem = (id: string, name: string) => {
+		update((todoList) => {
+			return {
+				...todoList,
+				items: renameItemInArray(todoList.items, id, name)
+			};
+		});
+	};
+
 	return {
 		subscribe,
 		set,
 		toggleCompleted,
-		toggleHide
+		toggleHide,
+		renameItem
 	};
 })();
 

@@ -13,12 +13,12 @@
 	<div class="header">
 		<span class="name">{todoList.name}</span>
 		<div class="hide-completed">
+			<span>hide completed</span>
 			<input
 				type="checkbox"
 				on:click={() => dispatch('hide-toggled')}
 				checked={todoList.hideCompleted}
 			/>
-			<span>hide completed</span>
 		</div>
 	</div>
 
@@ -28,7 +28,7 @@
 		<ul>
 			{#each todoList.items as item}
 				{#if !item.completed || !todoList.hideCompleted}
-					<TodoItemView {item} on:item-toggled />
+					<TodoItemView {item} on:item-toggled on:item-renamed />
 				{/if}
 			{/each}
 		</ul>
