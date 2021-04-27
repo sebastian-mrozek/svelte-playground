@@ -1,5 +1,6 @@
 import { emptyList, TodoItem } from '../model/model';
 import { writable, Readable, derived } from 'svelte/store';
+import { v4 as uuidv4 } from 'uuid';
 
 export const todoStore = (() => {
 	const { subscribe, set, update } = writable(emptyList());
@@ -57,12 +58,30 @@ export const todoStore = (() => {
 		});
 	};
 
+	const createItem = (name: string): TodoItem => {
+		return {
+			id: uuidv4(),
+			caption: name,
+			completed: false
+		};
+	};
+
+	const addItem = (name: string) => {
+		update((todoList) => {
+			return {
+				...todoList,
+				items: [...todoList.items, createItem(name)]
+			};
+		});
+	};
+
 	return {
 		subscribe,
 		set,
 		toggleCompleted,
 		toggleHide,
-		renameItem
+		renameItem,
+		addItem
 	};
 })();
 
