@@ -7,7 +7,7 @@
 	let elem = undefined;
 
 	const keyPressed = (e) => {
-		if (e.keyCode === 13) {
+		if (e.keyCode === 13 && value.length > 0) {
 			addItem();
 		}
 	};
@@ -20,7 +20,6 @@
 </script>
 
 <div>
-	<!-- svelte-ignore a11y-autofocus -->
 	<input bind:value bind:this={elem} on:keydown={keyPressed} />
-	<button on:click={addItem}>Add</button>
+	<button on:click={addItem} disabled={value.length === 0}>Add</button>
 </div>
