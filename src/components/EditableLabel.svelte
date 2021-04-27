@@ -32,6 +32,7 @@
 </script>
 
 {#if editing}
+	<!-- svelte-ignore a11y-autofocus -->
 	<input in:blur bind:value on:keydown={handleKeyDown} on:blur={finishEditing} autofocus />
 {:else}
 	<span in:blur on:click={startEditing}>
