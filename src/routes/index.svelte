@@ -1,7 +1,8 @@
 <script lang="typescript">
 	import { v4 as uuidv4 } from 'uuid';
-	import { todoStore, todoCountStore } from '../data/store';
+	import { todoStore, todoCountStore } from '../data/todoStore';
 	import TodoListView from '../components/TodoListView.svelte';
+	import DebugComponent from '../components/DebugComponent.svelte';
 
 	// initialize the todo list with some data
 	$todoStore = {
@@ -28,9 +29,12 @@
 	};
 </script>
 
-<TodoListView
-	todoList={$todoStore}
-	todoCount={$todoCountStore}
-	on:hide-toggled={() => todoStore.toggleHide()}
-	on:item-toggled={(e) => todoStore.toggleCompleted(e.detail.id)}
-/>
+<div>
+	<TodoListView
+		todoList={$todoStore}
+		todoCount={$todoCountStore}
+		on:hide-toggled={() => todoStore.toggleHide()}
+		on:item-toggled={(e) => todoStore.toggleCompleted(e.detail.id)}
+	/>
+	<DebugComponent />
+</div>
