@@ -1,11 +1,13 @@
 <script lang="typescript">
-	import { todoStore } from '../data/todoStore';
+	import { emptyList, TodoList } from '../model/model';
+
+	export let todoList: TodoList = emptyList();
 </script>
 
 <div class="container">
 	All tasks:
 	<div>
-		{#each $todoStore.items as item}
+		{#each todoList.items as item}
 			{item.id}: '{item.caption}' is {!item.completed ? 'not' : ''} done<br />
 		{/each}
 	</div>
