@@ -31,12 +31,10 @@
 	};
 </script>
 
-<span>
-	{#if editing}
-		<input in:blur bind:value on:keydown={handleKeyDown} on:blur={finishEditing} autofocus />
-	{:else}
-		<span in:blur on:click={startEditing}>
-			{value}
-		</span>
-	{/if}
-</span>
+{#if editing}
+	<input in:blur bind:value on:keydown={handleKeyDown} on:blur={finishEditing} autofocus />
+{:else}
+	<span in:blur on:click={startEditing}>
+		<slot>{value}</slot>
+	</span>
+{/if}
