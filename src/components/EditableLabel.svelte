@@ -1,4 +1,5 @@
 <script lang="typescript">
+	import { blur } from 'svelte/transition';
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
 
@@ -32,9 +33,9 @@
 
 <span>
 	{#if editing}
-		<input bind:value on:keydown={handleKeyDown} on:blur={finishEditing} autofocus />
+		<input in:blur bind:value on:keydown={handleKeyDown} on:blur={finishEditing} autofocus />
 	{:else}
-		<span on:click={startEditing}>
+		<span in:blur on:click={startEditing}>
 			{value}
 		</span>
 	{/if}
