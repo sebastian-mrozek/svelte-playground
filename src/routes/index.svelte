@@ -64,8 +64,7 @@
 			caption: e.detail,
 			completed: false
 		};
-		todoList.items.push(newItem);
-		todoList = todoList;
+		todoList.items = [...todoList.items, newItem];
 	};
 </script>
 
